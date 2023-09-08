@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from transformers import pipeline
 import random
 
+
 class WebContentAggregator:
     def __init__(self):
         self.user_input = ""
@@ -28,9 +29,11 @@ class WebContentAggregator:
             "url": url
         }
 
+
 class ContentAnalyzer:
     def __init__(self):
-        self.sentiment_classifier = pipeline("text-classification", model="distilbert-base-uncased-finetuned-sst-2-english")
+        self.sentiment_classifier = pipeline(
+            "text-classification", model="distilbert-base-uncased-finetuned-sst-2-english")
         self.topic_modeler = pipeline("text-generation", model="gpt2")
         self.entity_recognizer = pipeline("ner", model="dslim/bert-base-NER")
 
@@ -39,12 +42,14 @@ class ContentAnalyzer:
         return sentiment
 
     def analyze_topics(self, text):
-        topics = self.topic_modeler(text, max_length=50, num_return_sequences=1)[0]["generated_text"]
+        topics = self.topic_modeler(text, max_length=50, num_return_sequences=1)[
+            0]["generated_text"]
         return topics
 
     def recognize_entities(self, text):
         entities = self.entity_recognizer(text)
         return entities
+
 
 class PersonalizedRecommendations:
     def __init__(self, user_searches):
@@ -54,6 +59,7 @@ class PersonalizedRecommendations:
         recommended_content = []
         # Logic to generate personalized recommendations based on user_searches
         return recommended_content
+
 
 class ReinforcementLearning:
     def __init__(self):
@@ -67,6 +73,7 @@ class ReinforcementLearning:
         # Logic to refine recommendation algorithms based on the updated accuracy
         pass
 
+
 class ProfitGenerator:
     def __init__(self):
         self.commission_rate = 0.05
@@ -76,6 +83,7 @@ class ProfitGenerator:
             return self.commission_rate * random.uniform(10.0, 100.0)
         else:
             return 0.0
+
 
 class UserPrivacyManager:
     def __init__(self):
@@ -88,6 +96,7 @@ class UserPrivacyManager:
     def ensure_privacy(self):
         # Logic to ensure user privacy by handling data securely
         pass
+
 
 class ComplianceHandler:
     def __init__(self):
@@ -111,6 +120,7 @@ class ComplianceHandler:
         # Logic to handle anti-scraping measures
         pass
 
+
 class NewClass:
     def __init__(self):
         pass
@@ -119,6 +129,7 @@ class NewClass:
         # Logic to process data
         processed_data = data.upper()
         return processed_data
+
 
 class Database:
     def __init__(self, analyzer):
@@ -139,6 +150,7 @@ class Database:
             print(f"Sentiment: {sentiment}")
             print(f"Topics: {topics}")
             print(f"Entities: {entities}")
+
 
 class SearchEngine:
     def __init__(self):
@@ -187,6 +199,7 @@ class SearchEngine:
         data = "example data"
         processed_data = self.new_class.process_data(data)
         print(f"Processed Data: {processed_data}")
+
 
 if __name__ == "__main__":
     search_engine = SearchEngine()
